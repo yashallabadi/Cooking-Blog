@@ -72,15 +72,15 @@ exports.search = async (req, res) => {
     }
 }
 // Explorer latest  
-exports.explorerlatest = async (req, res) => {
-    try {
-        const limitnumber = 20;
-        const recipe = await Recipe.find({}).sort({ _id: -1 }).limit(limitnumber);
-        res.render('explore-latest', { title: 'Cooking Blog - Recipe', recipe });
-    } catch (error) {
-        res.status(500).send({ message: error.message || "Error Occured" });
-    }
-}
+// exports.explorerlatest = async (req, res) => {
+//     try {
+//         const limitnumber = 20;
+//         const recipe = await Recipe.find({}).sort({ _id: -1 }).limit(limitnumber);
+//         res.render('explore-latest', { title: 'Cooking Blog - Recipe', recipe });
+//     } catch (error) {
+//         res.status(500).send({ message: error.message || "Error Occured" });
+//     }
+// }
 
 // Explorer Random  
 exports.explorerandom = async (req, res) => {
