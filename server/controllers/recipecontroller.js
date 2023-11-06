@@ -18,6 +18,12 @@ exports.homepage = async (req, res) => {
 
         res.render('index', { title: 'Cooking Blog - Home', categories, food });
 
+        //todo: remove after testing 
+        // res.render('dummy', { title: 'Cooking Blog - Home', categories: categories, food });
+        // res.render('index', { title: 'EJS Demo', message: 'Hello, EJS!' });
+        // Send the HTML content as the response
+        // res.send(htmlContent);
+
     } catch (error) {
         res.status(500).send({ message: error.message || "Error Occured" });
     }
@@ -72,15 +78,15 @@ exports.search = async (req, res) => {
     }
 }
 // Explorer latest  
-// exports.explorerlatest = async (req, res) => {
-//     try {
-//         const limitnumber = 20;
-//         const recipe = await Recipe.find({}).sort({ _id: -1 }).limit(limitnumber);
-//         res.render('explore-latest', { title: 'Cooking Blog - Recipe', recipe });
-//     } catch (error) {
-//         res.status(500).send({ message: error.message || "Error Occured" });
-//     }
-// }
+exports.explorerlatest = async (req, res) => {
+    try {
+        const limitnumber = 20;
+        const recipe = await Recipe.find({}).sort({ _id: -1 }).limit(limitnumber);
+        res.render('explore-latest', { title: 'Cooking Blog - Recipe', recipe });
+    } catch (error) {
+        res.status(500).send({ message: error.message || "Error Occured" });
+    }
+}
 
 // Explorer Random  
 exports.explorerandom = async (req, res) => {
@@ -135,3 +141,338 @@ exports.submitonpost = async (req, res) => {
 
     }
 }
+
+
+
+// async function insertdummydata(){
+//     try{
+//         await Category.insertMany([
+//             {
+//                 "name": "Thai",
+//                 "image": "thai-food.jpg"
+//             },
+//             {
+//                 "name": "American",
+//                 "image": "american-food.jpg"
+//             },
+//             {
+//                 "name": "Chinese",
+//                 "image": "chinese-food.jpg"
+//             },
+//             {
+//                 "name": "Mexican",
+//                 "image": "mexican-food.jpg"
+//             },
+//             {
+//                 "name": "Indian",
+//                 "image": "indian-food.jpg"
+//             },
+//             {
+//                 "name": "Spanish",
+//                 "image": "spanish-food.jpg"
+//             }
+//             ]);
+//     } catch(error){
+//         console.log('err' + error);
+//     }
+// }
+// insertdummydata();
+
+
+// async function insertdummyrecipedata(){
+//     try{
+//         await Recipe.insertMany([
+//             {
+//                 "name": "Stir-fried vegetables",
+//                 "description": `Crush the garlic and finely slice the chilli and spring onion. Peel and finely slice the red onion,
+//                 Shred the mangetout, slice the mushrooms and water chestnuts, and mix with the shredded cabbage in a separate bowl
+//                 Heat your wok until it's really hot. Add a splash of oil - it should start to smoke - then the chilli and onion mix
+//                 Source: https:// www.jamieoliver.com/recipes/vegetables-recipes/stir-fried-vegetables/`,
+//                 "email" : "hello@raddy.co.uk",
+//                 "ingredients": [
+//                 "1 clove of garlic",
+//                 "1 fresh red chilli",
+//                 "3 spring onions",
+//                 "1 small red onion",
+//                 "1 handful of mangetout",
+//                 "a few shiitake mushrooms"
+//                 ],
+//                 "category": "Chinese",
+//                 "image": "stir-fried-vegetables.jpg"
+//             },
+//             {
+//                 "name": "Stir-fried vegetables",
+//                 "description": `Crush the garlic and finely slice the chilli and spring onion. Peel and finely slice the red onion,
+//                 Shred the mangetout, slice the mushrooms and water chestnuts, and mix with the shredded cabbage in a separate bowl
+//                 Heat your wok until it's really hot. Add a splash of oil - it should start to smoke - then the chilli and onion mix
+//                 Source: https:// www.jamieoliver.com/recipes/vegetables-recipes/stir-fried-vegetables/`,
+//                 "email" : "hello@raddy.co.uk",
+//                 "ingredients": [
+//                 "1 clove of garlic",
+//                 "1 fresh red chilli",
+//                 "3 spring onions",
+//                 "1 small red onion",
+//                 "1 handful of mangetout",
+//                 "a few shiitake mushrooms"
+//                 ],
+//                 "category": "Chinese",
+//                 "image": "stir-fried-vegetables.jpg"
+//             },
+//             {
+//                 "name": "Stir-fried vegetables",
+//                 "description": `Crush the garlic and finely slice the chilli and spring onion. Peel and finely slice the red onion,
+//                 Shred the mangetout, slice the mushrooms and water chestnuts, and mix with the shredded cabbage in a separate bowl
+//                 Heat your wok until it's really hot. Add a splash of oil - it should start to smoke - then the chilli and onion mix
+//                 Source: https:// www.jamieoliver.com/recipes/vegetables-recipes/stir-fried-vegetables/`,
+//                 "email" : "hello@raddy.co.uk",
+//                 "ingredients": [
+//                 "1 clove of garlic",
+//                 "1 fresh red chilli",
+//                 "3 spring onions",
+//                 "1 small red onion",
+//                 "1 handful of mangetout",
+//                 "a few shiitake mushrooms"
+//                 ],
+//                 "category": "Chinese",
+//                 "image": "stir-fried-vegetables.jpg"
+//             },
+//             {
+//                 "name": "Stir-fried vegetables",
+//                 "description": `Crush the garlic and finely slice the chilli and spring onion. Peel and finely slice the red onion,
+//                 Shred the mangetout, slice the mushrooms and water chestnuts, and mix with the shredded cabbage in a separate bowl
+//                 Heat your wok until it's really hot. Add a splash of oil - it should start to smoke - then the chilli and onion mix
+//                 Source: https:// www.jamieoliver.com/recipes/vegetables-recipes/stir-fried-vegetables/`,
+//                 "email" : "hello@raddy.co.uk",
+//                 "ingredients": [
+//                 "1 clove of garlic",
+//                 "1 fresh red chilli",
+//                 "3 spring onions",
+//                 "1 small red onion",
+//                 "1 handful of mangetout",
+//                 "a few shiitake mushrooms"
+//                 ],
+//                 "category": "Chinese",
+//                 "image": "stir-fried-vegetables.jpg"
+//             },
+//             {
+//                 "name": "Stir-fried vegetables",
+//                 "description": `Crush the garlic and finely slice the chilli and spring onion. Peel and finely slice the red onion,
+//                 Shred the mangetout, slice the mushrooms and water chestnuts, and mix with the shredded cabbage in a separate bowl
+//                 Heat your wok until it's really hot. Add a splash of oil - it should start to smoke - then the chilli and onion mix
+//                 Source: https:// www.jamieoliver.com/recipes/vegetables-recipes/stir-fried-vegetables/`,
+//                 "email" : "hello@raddy.co.uk",
+//                 "ingredients": [
+//                 "1 clove of garlic",
+//                 "1 fresh red chilli",
+//                 "3 spring onions",
+//                 "1 small red onion",
+//                 "1 handful of mangetout",
+//                 "a few shiitake mushrooms"
+//                 ],
+//                 "category": "Chinese",
+//                 "image": "stir-fried-vegetables.jpg"
+//             },
+//             {
+//                 "name": "Stir-fried vegetables",
+//                 "description": `Crush the garlic and finely slice the chilli and spring onion. Peel and finely slice the red onion,
+//                 Shred the mangetout, slice the mushrooms and water chestnuts, and mix with the shredded cabbage in a separate bowl
+//                 Heat your wok until it's really hot. Add a splash of oil - it should start to smoke - then the chilli and onion mix
+//                 Source: https:// www.jamieoliver.com/recipes/vegetables-recipes/stir-fried-vegetables/`,
+//                 "email" : "hello@raddy.co.uk",
+//                 "ingredients": [
+//                 "1 clove of garlic",
+//                 "1 fresh red chilli",
+//                 "3 spring onions",
+//                 "1 small red onion",
+//                 "1 handful of mangetout",
+//                 "a few shiitake mushrooms"
+//                 ],
+//                 "category": "Chinese",
+//                 "image": "stir-fried-vegetables.jpg"
+//             },
+//             {
+//                 "name": "Stir-fried vegetables",
+//                 "description": `Crush the garlic and finely slice the chilli and spring onion. Peel and finely slice the red onion,
+//                 Shred the mangetout, slice the mushrooms and water chestnuts, and mix with the shredded cabbage in a separate bowl
+//                 Heat your wok until it's really hot. Add a splash of oil - it should start to smoke - then the chilli and onion mix
+//                 Source: https:// www.jamieoliver.com/recipes/vegetables-recipes/stir-fried-vegetables/`,
+//                 "email" : "hello@raddy.co.uk",
+//                 "ingredients": [
+//                 "1 clove of garlic",
+//                 "1 fresh red chilli",
+//                 "3 spring onions",
+//                 "1 small red onion",
+//                 "1 handful of mangetout",
+//                 "a few shiitake mushrooms"
+//                 ],
+//                 "category": "Chinese",
+//                 "image": "stir-fried-vegetables.jpg"
+//             },
+//             {
+//                 "name": "Stir-fried vegetables",
+//                 "description": `Crush the garlic and finely slice the chilli and spring onion. Peel and finely slice the red onion,
+//                 Shred the mangetout, slice the mushrooms and water chestnuts, and mix with the shredded cabbage in a separate bowl
+//                 Heat your wok until it's really hot. Add a splash of oil - it should start to smoke - then the chilli and onion mix
+//                 Source: https:// www.jamieoliver.com/recipes/vegetables-recipes/stir-fried-vegetables/`,
+//                 "email" : "hello@raddy.co.uk",
+//                 "ingredients": [
+//                 "1 clove of garlic",
+//                 "1 fresh red chilli",
+//                 "3 spring onions",
+//                 "1 small red onion",
+//                 "1 handful of mangetout",
+//                 "a few shiitake mushrooms"
+//                 ],
+//                 "category": "Chinese",
+//                 "image": "stir-fried-vegetables.jpg"
+//             },
+//             {
+//                 "name": "Stir-fried vegetables",
+//                 "description": `Crush the garlic and finely slice the chilli and spring onion. Peel and finely slice the red onion,
+//                 Shred the mangetout, slice the mushrooms and water chestnuts, and mix with the shredded cabbage in a separate bowl
+//                 Heat your wok until it's really hot. Add a splash of oil - it should start to smoke - then the chilli and onion mix
+//                 Source: https:// www.jamieoliver.com/recipes/vegetables-recipes/stir-fried-vegetables/`,
+//                 "email" : "hello@raddy.co.uk",
+//                 "ingredients": [
+//                 "1 clove of garlic",
+//                 "1 fresh red chilli",
+//                 "3 spring onions",
+//                 "1 small red onion",
+//                 "1 handful of mangetout",
+//                 "a few shiitake mushrooms"
+//                 ],
+//                 "category": "Chinese",
+//                 "image": "stir-fried-vegetables.jpg"
+//             },
+//             {
+//                 "name": "Stir-fried vegetables",
+//                 "description": `Crush the garlic and finely slice the chilli and spring onion. Peel and finely slice the red onion,
+//                 Shred the mangetout, slice the mushrooms and water chestnuts, and mix with the shredded cabbage in a separate bowl
+//                 Heat your wok until it's really hot. Add a splash of oil - it should start to smoke - then the chilli and onion mix
+//                 Source: https:// www.jamieoliver.com/recipes/vegetables-recipes/stir-fried-vegetables/`,
+//                 "email" : "hello@raddy.co.uk",
+//                 "ingredients": [
+//                 "1 clove of garlic",
+//                 "1 fresh red chilli",
+//                 "3 spring onions",
+//                 "1 small red onion",
+//                 "1 handful of mangetout",
+//                 "a few shiitake mushrooms"
+//                 ],
+//                 "category": "Chinese",
+//                 "image": "stir-fried-vegetables.jpg"
+//             },
+//             {
+//                 "name": "Stir-fried vegetables",
+//                 "description": `Crush the garlic and finely slice the chilli and spring onion. Peel and finely slice the red onion,
+//                 Shred the mangetout, slice the mushrooms and water chestnuts, and mix with the shredded cabbage in a separate bowl
+//                 Heat your wok until it's really hot. Add a splash of oil - it should start to smoke - then the chilli and onion mix
+//                 Source: https:// www.jamieoliver.com/recipes/vegetables-recipes/stir-fried-vegetables/`,
+//                 "email" : "hello@raddy.co.uk",
+//                 "ingredients": [
+//                 "1 clove of garlic",
+//                 "1 fresh red chilli",
+//                 "3 spring onions",
+//                 "1 small red onion",
+//                 "1 handful of mangetout",
+//                 "a few shiitake mushrooms"
+//                 ],
+//                 "category": "Chinese",
+//                 "image": "stir-fried-vegetables.jpg"
+//             },
+//             {
+//                 "name": "Stir-fried vegetables",
+//                 "description": `Crush the garlic and finely slice the chilli and spring onion. Peel and finely slice the red onion,
+//                 Shred the mangetout, slice the mushrooms and water chestnuts, and mix with the shredded cabbage in a separate bowl
+//                 Heat your wok until it's really hot. Add a splash of oil - it should start to smoke - then the chilli and onion mix
+//                 Source: https:// www.jamieoliver.com/recipes/vegetables-recipes/stir-fried-vegetables/`,
+//                 "email" : "hello@raddy.co.uk",
+//                 "ingredients": [
+//                 "1 clove of garlic",
+//                 "1 fresh red chilli",
+//                 "3 spring onions",
+//                 "1 small red onion",
+//                 "1 handful of mangetout",
+//                 "a few shiitake mushrooms"
+//                 ],
+//                 "category": "Chinese",
+//                 "image": "stir-fried-vegetables.jpg"
+//             },
+//             {
+//                 "name": "Stir-fried vegetables",
+//                 "description": `Crush the garlic and finely slice the chilli and spring onion. Peel and finely slice the red onion,
+//                 Shred the mangetout, slice the mushrooms and water chestnuts, and mix with the shredded cabbage in a separate bowl
+//                 Heat your wok until it's really hot. Add a splash of oil - it should start to smoke - then the chilli and onion mix
+//                 Source: https:// www.jamieoliver.com/recipes/vegetables-recipes/stir-fried-vegetables/`,
+//                 "email" : "hello@raddy.co.uk",
+//                 "ingredients": [
+//                 "1 clove of garlic",
+//                 "1 fresh red chilli",
+//                 "3 spring onions",
+//                 "1 small red onion",
+//                 "1 handful of mangetout",
+//                 "a few shiitake mushrooms"
+//                 ],
+//                 "category": "Chinese",
+//                 "image": "stir-fried-vegetables.jpg"
+//             },
+//             {
+//                 "name": "Stir-fried vegetables",
+//                 "description": `Crush the garlic and finely slice the chilli and spring onion. Peel and finely slice the red onion,
+//                 Shred the mangetout, slice the mushrooms and water chestnuts, and mix with the shredded cabbage in a separate bowl
+//                 Heat your wok until it's really hot. Add a splash of oil - it should start to smoke - then the chilli and onion mix
+//                 Source: https:// www.jamieoliver.com/recipes/vegetables-recipes/stir-fried-vegetables/`,
+//                 "email" : "hello@raddy.co.uk",
+//                 "ingredients": [
+//                 "1 clove of garlic",
+//                 "1 fresh red chilli",
+//                 "3 spring onions",
+//                 "1 small red onion",
+//                 "1 handful of mangetout",
+//                 "a few shiitake mushrooms"
+//                 ],
+//                 "category": "Chinese",
+//                 "image": "stir-fried-vegetables.jpg"
+//             },
+//             {
+//                 "name": "Stir-fried vegetables",
+//                 "description": `Crush the garlic and finely slice the chilli and spring onion. Peel and finely slice the red onion,
+//                 Shred the mangetout, slice the mushrooms and water chestnuts, and mix with the shredded cabbage in a separate bowl
+//                 Heat your wok until it's really hot. Add a splash of oil - it should start to smoke - then the chilli and onion mix
+//                 Source: https:// www.jamieoliver.com/recipes/vegetables-recipes/stir-fried-vegetables/`,
+//                 "email" : "hello@raddy.co.uk",
+//                 "ingredients": [
+//                 "1 clove of garlic",
+//                 "1 fresh red chilli",
+//                 "3 spring onions",
+//                 "1 small red onion",
+//                 "1 handful of mangetout",
+//                 "a few shiitake mushrooms"
+//                 ],
+//                 "category": "Chinese",
+//                 "image": "stir-fried-vegetables.jpg"
+//             },
+//             {
+//                 "name": "Stir-fried vegetables",
+//                 "description": `Crush the garlic and finely slice the chilli and spring onion. Peel and finely slice the red onion,
+//                 Shred the mangetout, slice the mushrooms and water chestnuts, and mix with the shredded cabbage in a separate bowl
+//                 Heat your wok until it's really hot. Add a splash of oil - it should start to smoke - then the chilli and onion mix
+//                 Source: https:// www.jamieoliver.com/recipes/vegetables-recipes/stir-fried-vegetables/`,
+//                 "email" : "hello@raddy.co.uk",
+//                 "ingredients": [
+//                 "1 clove of garlic",
+//                 "1 fresh red chilli",
+//                 "3 spring onions",
+//                 "1 small red onion",
+//                 "1 handful of mangetout",
+//                 "a few shiitake mushrooms"
+//                 ],
+//                 "category": "Chinese",
+//                 "image": "stir-fried-vegetables.jpg"
+//             }
+//         ]);
+//     } catch(error){
+//         console.log('err' + error);
+//     }
+// }
+// insertdummyrecipedata();
