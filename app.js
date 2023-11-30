@@ -16,7 +16,7 @@ app.use(session({
     secret: 'CookingBlogSecretSession',
     saveUninitialized: true,
     resave: true
-}));
+}))
 app.use(flash());
 app.use(fileUpload());
 
